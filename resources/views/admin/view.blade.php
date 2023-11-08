@@ -3,31 +3,36 @@
 @section('content')
 <table class="table">
     <thead>
-      <tr>
+        <h2 class="text-center text-success fw-bold">{{ session('message') }}</h2>
+        <tr>
         <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Title </th>
+        <th scope="col">Description</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        @foreach ($datas as $data)
+        <tr>
+        <th scope="row">{{ $loop->iteration }}</th>
+        <td>{{ $data->title }}</td>
+        <td>{{ $data->description }}</td>
+        <td>{{ $data->status==1 ? 'completed' : 'uncompleted' }}</td>
+        <td>
+            <a href="{{ route('task.edit',['id'=>$data->id]) }}" class="btn btn-sm btn-primary">
+                edit
+            </a>
+            <a href="{{ route('task.delete',['id'=>$data->id]) }}" class="btn btn-sm btn-danger">
+                delete
+            </a>
+        </td>
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
+      
+
+        @endforeach
+     
     </tbody>
   </table>
 @endsection
