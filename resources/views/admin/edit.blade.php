@@ -33,10 +33,10 @@
                     <label for="inputPassword4" class="col-sm-3 control-label">Task Completed Status</label>
                     <div class="col-sm-9">
                         <label class="me-3">
-                            <input type="radio" name="status" value="1" class="me-1" >Published
+                            <input type="radio" name="status" value="1" class="me-1" {{ $data->status==1 ? 'checked' : '' }}>Published
                         </label>
                         <label class="">
-                            <input type="radio" name="status" value="2" class="me-1">UnPublished
+                            <input type="radio" name="status" value="2" class="me-1"  {{ $data->status==2 ? 'checked' : '' }}>UnPublished
                         </label>
                     </div>
                 </div>
